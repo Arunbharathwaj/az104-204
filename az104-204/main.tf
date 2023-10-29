@@ -1,1 +1,3 @@
-test
+resource "instance" "instance" {
+  
+}
