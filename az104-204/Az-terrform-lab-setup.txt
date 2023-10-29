@@ -1,0 +1,124 @@
+###############################################################################
+parse_git_branch() {
+git branch 2>/dev/null | sed -n '/\* /s///p'
+}
+export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+#PS1="[\e[1;33m\u\e[m@\e[1;36m\h\e[m] [\$(date +%k:%M:%S)]\n\e[0;32m[\w]\e[m \n\$ 
+
+Az104-204
+Github PAT - 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
+###############################################################################
+vagrant@ol7demo /repolist_work/roughbooklearning/az104-204/project1 module1$ cat ~/.terraformrc 
+export ARM_SUBSCRIPTION_ID="c40acdd5-5a8e-4e6e-91c4-e2fe8e4d7a2b"
+export ARM_TENANT_ID="64484a73-847f-4a57-822a-89d94b8332b2"
+export ARM_CLIENT_ID="429ce61b-cca5-4422-be25-1f5a9a5f754b"
+export ARM_CLIENT_SECRET="ky08Q~pzkTFX772JXYKuh6D.oIPkRjpA5LgA5b5Z"
+###############################################################################
+vagrant@ol7demo /repolist_work/roughbooklearning/az104-204/project1 module1$ az ad sp credential reset --id 429ce61b-cca5-4422-be25-1f5a9a5f754b --create-cert
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "429ce61b-cca5-4422-be25-1f5a9a5f754b",
+  "fileWithCertAndPrivateKey": "/home/vagrant/tmpdsy1ge4c.pem",
+  "password": null,
+  "tenant": "64484a73-847f-4a57-822a-89d94b8332b2"
+}
+
+az ad sp list --display-name terraform-admin-user
+################################################################################
+vagrant@ol7demo /repolist_work/roughbooklearning/az104-204/project1 module1$ az login --service-principal -u 429ce61b-cca5-4422-be25-1f5a9a5f754b -p ~/aztflogin.pem --tenant 64484a73-847f-4a57-822a-89d94b8332b2
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "64484a73-847f-4a57-822a-89d94b8332b2",
+    "id": "c40acdd5-5a8e-4e6e-91c4-e2fe8e4d7a2b",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Az500/200",
+    "state": "Enabled",
+    "tenantId": "64484a73-847f-4a57-822a-89d94b8332b2",
+    "user": {
+      "name": "429ce61b-cca5-4422-be25-1f5a9a5f754b",
+      "type": "servicePrincipal"
+    }
+  }
+]
+################################################################################
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDgbyJgmVxtqLp+
+jJac/N/BlPjWKV9oztYYlHQCN1jK9/sGa9c/8/ltXv1WMVXnl9rOvpC83DMEP2k/
+jnSRb0hW1ouxfrNcvQtzGZO0So5AICIcel/9+6foVGgOdVd1buCEvJCSwzkEOfWD
+hagB9Hft8VkgnrQfWmYY7knGhjdLQbx9FQrr1E1Vrt0aLseT1FAP/XlO3K9Jb9Wu
+S5vCQdPz7wCVrRqtb/4JIU7adlEVicqr1Dj7zZEckUSeQOh4FOyoAcGHz/pUCsUo
+OOwBzxRRqEdFVZP8XDlcktfG7IqBlnP6DqeHkdOyABI25q1HnGVm5lqM/ftKXVHL
+axzF9d4NAgMBAAECggEARFKwxXWKhLub4pCL/UiiGX1vb0rzB6YH2T3APzh4KHnr
+il3kDk0IfrovJ0EnpLQ+4Td0OnpScZWYRcfpRqj4/a6cojEvCyllxelgZL9ZpL3j
+hIXgmSI2UGz5rIUeVdqmMOJypKsXvWijjCFxLv8sT1xsxJhrvyu27xoDjZMoXBka
+AYnZgKa2MDGaLt96HVloff8f04JGsxPhmuY6TcsyzwtQ5bH0Z4Pr/DGyYqa0Bvuj
+cLcrm4G26QKlfjQBlHYxHVbNUymaO7ojRBN7txJwR+wwuPe53oPNscJcfxfpDkTI
+F9AMxsecX2z4aUOfrXYfpbHJD3g9iaUfvICaVaisIQKBgQDznJbWBfQ0UfNuiE9H
+gpQnvtrgy4XjY8xAjL44yVQjg031vg5FJGyQuNBzXZN45Xxi906Dxhky7Ykq9afS
+SHK12X7QiUiOPNa2ls1JjyOpTDCW+YK4CJqgcusSMrgr+mnKn1t1zN0CQfhwteSW
+xtTukTVFg6WTyt+oIBu0sHxFFQKBgQDr2OLEHbPEZHiWjy7Md846rGxDaCXeFmQY
+vvUqJ40tHrLg+SAO6U8jjqEfl7crnyoAPaGWH5Q7jiGQbaTbGqg8ysqb+T5Nuiuw
+3sI8knAySffxhC+47p1yzxf0Kf5Y1B0kyPv+BVQ4mhY8Ml0j+Zb1wLg4N49wL7WX
+EYIbDaxjGQKBgFYB+PcDDx7RuCJUGbljjq8hoOEwucp4V4qKpjYiToRjPUj/msYq
+f/Hwbhfs9739N5cxPRUlAYyLdJwoMuH5FhbB/RXfAjDFpgC86SmJUcvZzGXhHZef
+4ge3yuqX4ZIVTPhunrnOZFEBvZb9gQECnfbEaYxrWC//tksDWwTGMnmpAoGAfTLH
+PmCeG3VSZmpf53755T++wRG6eGjefhxwvQ397aPMRY06LXBA6JlAgyrgu7FkdHhD
+HRRqdir/OlJaH03JXWwxnhbzsgNQSjYWWl1KXgfSLU2En+Fbh6TUDHN2Z+VCC1L+
+Ilzl1p5Fi3MY6o4GSzMhGAa2iFFrTmSm8oGRr5ECgYEAleNZ/MtamSLQAojPdEJ7
+YALLpyxvXX3mwHTdCuz0htKi9Tw1XHhFduMSJSnQJaIStyL/epSWJwGMLr938kQf
+rxrJyJO6jRm1HgmmxPReyQtFI3z7Va3nXJE6BTRKv3HY9ztB62TY5SE/a7orUQbd
+hnbqtZZrEuV2fJkJwt6m730=
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIICoTCCAYkCAgPoMA0GCSqGSIb3DQEBBQUAMBQxEjAQBgNVBAMMCUNMSS1Mb2dp
+bjAiGA8yMDIzMTAyOTE1MDY0MFoYDzIwMjQxMDI5MTUwNjQyWjAUMRIwEAYDVQQD
+DAlDTEktTG9naW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDgbyJg
+mVxtqLp+jJac/N/BlPjWKV9oztYYlHQCN1jK9/sGa9c/8/ltXv1WMVXnl9rOvpC8
+3DMEP2k/jnSRb0hW1ouxfrNcvQtzGZO0So5AICIcel/9+6foVGgOdVd1buCEvJCS
+wzkEOfWDhagB9Hft8VkgnrQfWmYY7knGhjdLQbx9FQrr1E1Vrt0aLseT1FAP/XlO
+3K9Jb9WuS5vCQdPz7wCVrRqtb/4JIU7adlEVicqr1Dj7zZEckUSeQOh4FOyoAcGH
+z/pUCsUoOOwBzxRRqEdFVZP8XDlcktfG7IqBlnP6DqeHkdOyABI25q1HnGVm5lqM
+/ftKXVHLaxzF9d4NAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAC2e81hF5ngq1pAL
+an/4NeOyFHQ6GOu9FgUmq7wUBiOE+hYUoPbcm9C840p/9WCOoz99UEM82ebdP6ds
+DxXvEIP9R1fM2TzdS/S7LliyCkfjiiiNvixcCcf5ryX1wcXA3zXIWO4yw2P5CguS
+i6oAPu539zeHmGoyYOFIQ251PkO9R2Qh+NqUzm74cwylO1Uw0PPwy3oDv12n8pNH
+B3h4wiYFK9KAgC6iiouKpAZcvdUL+/Oy+lRLh5N9ZxTYctywVzu4aNxka85X2s/Y
+doS00DDwR2iLGCdqDaGvJDBtT89pdNausBfMVer+PH/OuBBql2hdq+HsnksSfwVM
+SppLO28=
+-----END CERTIFICATE-----
+#############################################################################
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch'
+alias gbd='git branch --delete '
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
